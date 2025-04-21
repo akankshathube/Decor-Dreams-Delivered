@@ -5,11 +5,15 @@ import React, { useState } from "react";
 import { StyleSheet, View, ScrollView, TouchableOpacity } from "react-native";
 import { Checkbox, Text, useTheme } from "react-native-paper";
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [agree, setAgree] = useState(false);
   const theme = useTheme(); // Get theme colors from react-native-paper
 
+  const handleSignInPress = () => {
+    console.log("Navigating to SignIn"); // Add this for debugging
+    navigation.navigate("SignIn"); // Ensure this matches your navigator
+  };
   return (
     <View style={styles.mainContainer}>
       <Header title="Sign Up" />
@@ -63,7 +67,7 @@ const SignUp = () => {
           ></Button>
           <TouchableOpacity
             style={styles.signInContainer}
-            onPress={() => console.log("Navigate to Sign In")}
+            onPress={handleSignInPress}
           >
             <Text style={styles.signInText}>
               Already have an account?{" "}
