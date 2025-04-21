@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     height: 24,
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     flex: 1,
   },
