@@ -20,12 +20,12 @@ const Splash = () => {
         <Button
           onPress={() => setActiveButton("signUp")}
           buttonText="Sign Up"
-          style={[
-            styles.button,
-            activeButton === "signUp"
+          style={{
+            ...styles.button,
+            ...(activeButton === "signUp"
               ? styles.activeButton
-              : styles.inactiveButton,
-          ]}
+              : styles.inactiveButton),
+          }}
           textStyle={
             activeButton === "signUp" ? styles.activeText : styles.inactiveText
           }
@@ -33,12 +33,12 @@ const Splash = () => {
         <Button
           onPress={() => setActiveButton("signIn")}
           buttonText="Sign In"
-          style={[
-            styles.button,
-            activeButton === "signIn"
+          style={{
+            ...styles.button,
+            ...(activeButton === "signIn"
               ? styles.activeButton
-              : styles.inactiveButton,
-          ]}
+              : styles.inactiveButton),
+          }}
           textStyle={
             activeButton === "signIn" ? styles.activeText : styles.inactiveText
           }
