@@ -16,9 +16,10 @@ interface ImageWithTitleProps {
   imageUrl: string;
   productName: string;
   productPrice: string;
-  productId: number; // Added to identify the product
+  productId: number;
+  isFavorite: boolean; // Added to control the favorite state from parent
   onPress?: () => void;
-  onAddToFavorites?: (id: number, isFavorite: boolean) => void; // Callback for favorites
+  onAddToFavorites?: (id: number, isFavorite: boolean) => void;
 }
 
 const ImageWithTitle: React.FC<ImageWithTitleProps> = ({
@@ -26,18 +27,14 @@ const ImageWithTitle: React.FC<ImageWithTitleProps> = ({
   productName,
   productPrice,
   productId,
+  isFavorite,
   onPress,
   onAddToFavorites,
 }) => {
-  const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const [isFavorite, setIsFavorite] = useState(false);
-
   const handleFavoritePress = (event: any) => {
-    event.stopPropagation(); // Prevent triggering the parent onPress
-    const newFavoriteState = !isFavorite;
-    setIsFavorite(newFavoriteState);
+    event.stopPropagation();
     if (onAddToFavorites) {
-      onAddToFavorites(productId, newFavoriteState);
+      onAddToFavorites(productId, !isFavorite);
     }
   };
 

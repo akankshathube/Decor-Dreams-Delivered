@@ -11,6 +11,7 @@ import Favorites from "@/src/screens/app/Favorites/favorites";
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text } from "react-native";
 import { useTheme } from "@react-navigation/native";
+import ProductDetail from "@/src/screens/app/ProductDetails/productDetails";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -122,6 +123,11 @@ export default function HomeScreen() {
         <Stack.Screen
           name="SignIn"
           component={SignIn}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ProductDetail"
+          component={ProductDetail}
           options={{ headerShown: false }}
         />
         <Stack.Screen

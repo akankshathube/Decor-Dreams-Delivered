@@ -25,7 +25,7 @@ interface Category {
   icon: string;
 }
 
-const Home = () => {
+const Home = ({ navigation }: any) => {
   const categories: Category[] = [
     { name: "Popular", icon: "star" },
     { name: "Chairs", icon: "chair" },
@@ -36,6 +36,7 @@ const Home = () => {
   ];
 
   const [activeCategory, setActiveCategory] = React.useState<string>("Popular");
+  const [favorites, setFavorites] = React.useState<number[]>([]); // Store favorite product IDs
 
   // Filter products based on active category
   const filteredProducts = productList.products.filter((product) => {
@@ -45,12 +46,36 @@ const Home = () => {
     return product.category === activeCategory;
   });
 
+  // Handle favorite toggle
+  const handleFavoriteToggle = (productId: number, isFavorite: boolean) => {
+    if (isFavorite) {
+      setFavorites([...favorites, productId]);
+    } else {
+      setFavorites(favorites.filter((id) => id !== productId));
+    }
+  };
+  const handleHomePress = () => {
+    console.log("Navigating to HomeScreen"); // Add this for debugging
+    navigation.navigate("Home"); // Ensure this matches your navigator
+  };
+  // Navigate to favorites screen
+  const navigateToFavorites = () => {
+    const favoriteProducts = productList.products.filter((product) =>
+      favorites.includes(product.id)
+    );
+    navigation.navigate("Favorites", { favorites: favoriteProducts });
+  };
+
   const renderProductItem = ({ item }: { item: Product }) => (
     <ImageWithTitle
+      productId={item.id}
       title={item.title}
       imageUrl={item.image}
       productName={item.title}
       productPrice={item.price.toString()}
+      isFavorite={favorites.includes(item.id)}
+      onAddToFavorites={handleFavoriteToggle}
+      onPress={() => navigation.navigate("ProductDetail", { product: item })}
     />
   );
 
@@ -95,7 +120,7 @@ const Home = () => {
       {/* Main Content */}
       <View style={styles.contentContainer}>
         <FlatList
-          data={filteredProducts} // Use filtered products
+          data={filteredProducts}
           renderItem={renderProductItem}
           keyExtractor={(item: Product) => item.id.toString()}
           numColumns={2}
