@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import ImageWithTitle from "@/src/components/ImagewithTitle";
 
-const Favorites = ({ route }: any) => {
+const Favorites = ({ navigation, route }: any) => {
   const { favorites } = route.params || { favorites: [] };
 
   const renderFavoriteItem = ({ item }: { item: any }) => (
@@ -13,6 +13,7 @@ const Favorites = ({ route }: any) => {
       productName={item.title}
       productPrice={item.price.toString()}
       isFavorite={true}
+      onPress={() => navigation.navigate("ProductDetail", { product: item })}
     />
   );
 

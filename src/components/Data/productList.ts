@@ -193,8 +193,13 @@ const productList = {
     {
       id: 20,
       title: "Sleek Console Table",
-      image:
-        "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHRhYmxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+      images: [
+        "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?ixlib=rb-4.0.3&...",
+        "https://images.unsplash.com/photo-1519944518891-4b5a0e7a1b9f?ixlib=rb-4.0.3&...",
+        "https://images.unsplash.com/photo-1604074131665-7a4b13870ab4?ixlib=rb-4.0.3&...",
+        "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&...",
+        "https://images.unsplash.com/photo-1583845112203-29329902330b?ixlib=rb-4.0.3&...",
+      ],
       category: "Tables",
       price: 199.0,
       description:
