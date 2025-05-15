@@ -5,7 +5,7 @@ import { blue } from "react-native-reanimated/lib/typescript/Colors";
 
 // Define your props interface at the top level
 interface HeaderProps {
-  title: string;
+  title?: string;
   showBackButton?: boolean;
 }
 

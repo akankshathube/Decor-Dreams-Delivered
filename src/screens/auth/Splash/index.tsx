@@ -2,9 +2,19 @@ import Button from "@/src/components/Button";
 import React, { useState } from "react";
 import { Image, Text, View, StyleSheet, Dimensions } from "react-native";
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
   const [activeButton, setActiveButton] = useState("signUp");
+  const handleSignUpPress = () => {
+    setActiveButton("signUp");
+    console.log("Navigating to SignUp"); // Add this for debugging
+    navigation.navigate("SignUp"); // Ensure this matches your navigator
+  };
 
+  const handleSignInPress = () => {
+    setActiveButton("signIn");
+    console.log("Navigating to SignIn"); // Add this for debugging
+    navigation.navigate("SignIn"); // Ensure this matches your navigator
+  };
   return (
     <View style={styles.container}>
       <Image
@@ -18,7 +28,7 @@ const Splash = () => {
 
       <View style={styles.buttonContainer}>
         <Button
-          onPress={() => setActiveButton("signUp")}
+          onPress={handleSignUpPress}
           buttonText="Sign Up"
           style={{
             ...styles.button,
@@ -31,7 +41,7 @@ const Splash = () => {
           }
         />
         <Button
-          onPress={() => setActiveButton("signIn")}
+          onPress={handleSignInPress}
           buttonText="Sign In"
           style={{
             ...styles.button,
